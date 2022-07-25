@@ -61,6 +61,15 @@ def fetch_fox_articles():
     _feed = feedparser.parse("https://moxie.foxnews.com/feedburner/latest.xml")
     save_new_articles(_feed)
     return 'Saved the article'
+    
+
+def fetch_hackernews_articles():
+    """Fetches new articles from RSS for Hacker News."""
+    _feed = feedparser.parse("https://feeds.feedburner.com/TheHackersNews")
+    save_new_articles(_feed)
+    return 'Saved the article'
+    
+    # 
 
 def delete_old_job_executions(max_age=604_800):
     """Deletes all apscheduler job execution logs older than `max_age`."""
