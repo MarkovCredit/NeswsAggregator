@@ -9,7 +9,7 @@ class Article(models.Model):
     description = models.TextField()
     pub_date = models.DateTimeField()
     link = models.URLField()
-    image = models.URLField(default = "../static/imgs/news.jpg")
+    image = models.URLField(default = "static/imgs/news.jpg")
     guid = models.CharField(max_length=50)
 
     def __str__(self) -> str:
