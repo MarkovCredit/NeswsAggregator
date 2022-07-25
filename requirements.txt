@@ -4,4 +4,4 @@ feedparser==6.0.8
 python-dateutil==2.8.2
 gunicorn
 whitenoise
-dj-database-url==0.5.0
+dj-database-url

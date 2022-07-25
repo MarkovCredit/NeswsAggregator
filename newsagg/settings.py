@@ -91,10 +91,10 @@ DATABASES = {
     }
 }
 
-import dj_database_url
+# import dj_database_url
 
-db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES['default'] = dj_database_url.config(db_from_env)
+# db_from_env = dj_database_url.config(conn_max_age=600)
+# DATABASES['default'] = dj_database_url.config(db_from_env)
 
 
 
