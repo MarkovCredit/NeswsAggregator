@@ -1,1 +1,1 @@
-web: gunicorn newsagg.wsgi
+heroku run python manage.py runserver
