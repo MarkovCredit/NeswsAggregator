@@ -34,7 +34,10 @@ def save_new_articles(feed):
         feed: requires a feedparser object
     """
     article_title = feed.channel.title
-    article_image = feed.channel.image["href"]
+    try:
+        article_image = feed.channel.image["href"]
+    except:
+        article_image = None 
 
     for item in feed.entries:
         if not Article.objects.filter(guid=item.guid).exists():
