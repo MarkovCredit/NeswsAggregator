@@ -22,7 +22,7 @@ logger = logging.getLogger(__name__)
 def parse_desc(desc):
     # sometimes the description is an html object so we need to find the tag and parse it
         parsed_desc = re.findall('(?<=<p>)(.*)(?=</p>)',desc)
-        return parsed_desc if parsed_desc else desc 
+        return parsed_desc[0] if parsed_desc else desc 
 
 def save_new_articles(feed):
     """Saves new articles to the database.
@@ -102,7 +102,17 @@ class Command(BaseCommand):
         max_instances=1,
         replace_existing=True,
                     )
-        logger.info("Added job: Fox News Articles")
+
+
+        scheduler.add_job(
+        fetch_hackernews_articles,
+        trigger="interval",
+        minutes=2,
+        id="HackerNews_Articles",
+        max_instances=1,
+        replace_existing=True,
+                    )
+        logger.info("Added job: Hacker News Articles")
 
         try:
             logger.info("Starting scheduler...")
