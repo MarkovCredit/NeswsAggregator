@@ -13,6 +13,12 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os 
 
+
+import dj_database_url
+from dotenv import load_dotenv
+
+#load env vars
+load_dotenv()  
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -22,7 +28,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-neznuc$!r3)lm3@rc5^-7)fj%&fbyxsw%aja5+o3)z#8-gp#i!'
+SECRET_KEY = os.getenv('DJANGO_SECRET') 
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -81,46 +88,9 @@ TEMPLATES = [
 WSGI_APPLICATION = 'newsagg.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-import dj_database_url
-
-# DATABASES['default'].update(dj_database_url.config(conn_max_age=600))
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-# DATABASES = {
-#     'default': dj_database_url.config(),
-# }
 
 
-DATABASES = {
-
-    'default': {
-
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-
-        'NAME': 'd3teq0flrsae3u',
-
-        'USER': 'tpdjiknhsaqvqw',
-
-        'PASSWORD': '470cb755915937523494cd0372f16b2221587ec8755bcb0f63c3d17340125600',
-
-        'HOST': 'ec2-107-22-122-106.compute-1.amazonaws.com',
-
-        'PORT': '5432',
-
-    }
-
-}
-
-
-
+DATABASES = { 'default': dj_database_url.config(default=os.getenv('DATABASE_URL')) }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators

@@ -90,7 +90,7 @@ class Command(BaseCommand):
         scheduler.add_job(
         fetch_bitcoin_articles,
         trigger="interval",
-        minutes=60,
+        minutes=10,
         id="Bitcoin_Articles_CoinTelegraph",
         max_instances=1,
         replace_existing=True,
@@ -100,7 +100,7 @@ class Command(BaseCommand):
         scheduler.add_job(
         fetch_fox_articles,
         trigger="interval",
-        minutes=2,
+        minutes=30,
         id="FoxNews_Articles",
         max_instances=1,
         replace_existing=True,
@@ -110,7 +110,7 @@ class Command(BaseCommand):
         scheduler.add_job(
         fetch_hackernews_articles,
         trigger="interval",
-        minutes=2,
+        minutes=120,
         id="HackerNews_Articles",
         max_instances=1,
         replace_existing=True,
