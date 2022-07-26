@@ -37,7 +37,7 @@ def save_new_articles(feed):
     try:
         article_image = feed.channel.image["href"]
     except:
-        article_image = None 
+        article_image = '' 
 
     for item in feed.entries:
         if not Article.objects.filter(guid=item.guid).exists():
@@ -90,7 +90,7 @@ class Command(BaseCommand):
         scheduler.add_job(
         fetch_bitcoin_articles,
         trigger="interval",
-        minutes=2,
+        minutes=60,
         id="Bitcoin_Articles_CoinTelegraph",
         max_instances=1,
         replace_existing=True,
