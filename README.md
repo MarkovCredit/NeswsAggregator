@@ -8,4 +8,4 @@ As a user, I would like to see the following:
 * Brief description of article
 * Link to the article
 * Forward link to send to someone 
-*
+
